@@ -32,7 +32,7 @@
             margin: 0;
             background-color: var(--bg-light);
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 70%),
                 linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
             background-size: 100% 100%, 45px 45px, 45px 45px;
@@ -155,7 +155,7 @@
             box-shadow: 0 10px 30px rgba(139, 92, 246, 0.08);
         }
 
-        /* 3D Bot Cards with AI Robot Background Image */
+        /* Exact 3D Software Box Card Style with Sunburst Background */
         .grid-bots {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -164,53 +164,62 @@
         }
 
         .bot-box {
-            /* AI Robot & Tech glowing background overlay */
-            background: linear-gradient(135deg, rgba(13, 9, 20, 0.94), rgba(24, 17, 36, 0.94)), 
-                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80');
-            background-blend-mode: overlay;
-            background-size: cover;
-            background-position: center;
-            border: 2px solid #3b2865;
-            border-radius: 20px;
+            background: 
+                radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.3) 0%, transparent 70%),
+                linear-gradient(145deg, #161026, #090610);
+            border: 3px solid #4c2889;
+            border-radius: 24px;
             padding: 36px 24px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), inset 0 0 30px rgba(139, 92, 246, 0.2);
-            transition: all 0.3s ease;
+            box-shadow: 0 25px 50px rgba(15, 5, 35, 0.6), inset 0 0 40px rgba(139, 92, 246, 0.3);
+            transform: perspective(1000px) rotateX(2deg);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .bot-box:hover {
-            transform: translateY(-8px);
-            border-color: var(--purple);
-            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.35), inset 0 0 35px rgba(139, 92, 246, 0.3);
+            transform: perspective(1000px) translateY(-10px) rotateX(0deg);
+            border-color: #a78bfa;
+            box-shadow: 0 30px 60px rgba(139, 92, 246, 0.5), inset 0 0 50px rgba(139, 92, 246, 0.5);
+        }
+
+        .bot-box .box-3d-header {
+            font-size: 9px;
+            font-family: var(--fm);
+            letter-spacing: 2px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            margin-bottom: 6px;
         }
 
         .bot-box .badge {
             display: inline-block;
-            background: rgba(139, 92, 246, 0.25);
-            color: #c4b5fd;
-            border: 1px solid rgba(139, 92, 246, 0.5);
+            background: linear-gradient(135deg, rgba(245, 185, 50, 0.2), rgba(232, 146, 12, 0.3));
+            color: var(--gold);
+            border: 1px solid rgba(245, 185, 50, 0.5);
             font: 700 11px var(--fm);
             padding: 6px 16px;
             border-radius: 99px;
             text-transform: uppercase;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(245, 185, 50, 0.2);
         }
 
         .bot-box h3 {
             font-family: var(--fh);
-            font-size: 21px;
+            font-size: 22px;
             font-weight: 900;
             color: #fff;
-            margin: 8px 0 10px;
+            margin: 6px 0 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .bot-box p {
-            color: var(--mut);
+            color: #d1d5db;
             font-size: 13px;
             margin: 0 0 20px;
             min-height: 38px;
@@ -218,11 +227,11 @@
 
         .bot-box .price-tag {
             font-family: var(--fh);
-            font-size: 34px;
+            font-size: 36px;
             font-weight: 900;
             color: var(--gold);
             margin: 14px 0 20px;
-            text-shadow: 0 2px 12px rgba(245,185,50,0.4);
+            text-shadow: 0 2px 15px rgba(245,185,50,0.4);
         }
 
         .bot-box .price-tag span {
@@ -237,14 +246,14 @@
             padding: 0;
             margin: 0 0 24px;
             text-align: left;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.15);
             padding-top: 16px;
         }
 
         .bot-box li {
             padding: 6px 0;
             font-size: 13px;
-            color: #d1d5db;
+            color: #e5e7eb;
             position: relative;
             padding-left: 22px;
         }
@@ -365,7 +374,8 @@
                 
                 <div class="grid-bots">
                     <div class="bot-box">
-                        <div class="badge" style="background:rgba(245,185,50,0.25);color:#f5b932;border-color:rgba(245,185,50,0.5)">★ Best Seller</div>
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
+                        <div class="badge">★ Best Seller</div>
                         <h3>Awais Scalper V22 EA</h3>
                         <p>High-frequency scalping engine built for speed and high win rate.</p>
                         <div class="price-tag">$699 <span>$999</span></div>
@@ -379,6 +389,7 @@
                     </div>
 
                     <div class="bot-box">
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
                         <div class="badge">Scalping Engine</div>
                         <h3>Fastest Scalper V15 EA</h3>
                         <p>Ultra-fast automated scalping engine with high accuracy precision.</p>
@@ -393,7 +404,8 @@
                     </div>
 
                     <div class="bot-box">
-                        <div class="badge" style="background:rgba(37,99,235,0.3);color:#93c5fd;border-color:rgba(37,99,235,0.5)">Prop-Firm & Funded</div>
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
+                        <div class="badge" style="background:linear-gradient(135deg, rgba(37,99,235,0.2), rgba(29,78,216,0.3));color:#93c5fd;border-color:rgba(37,99,235,0.5)">Prop-Firm & Funded</div>
                         <h3>Latest USD & Funded SL TP Autobot</h3>
                         <p>Automated SL/TP and risk workflow for prop-firm challenges.</p>
                         <div class="price-tag">$410</div>
@@ -407,6 +419,7 @@
                     </div>
 
                     <div class="bot-box">
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
                         <div class="badge">Multi-Pair Core</div>
                         <h3>Nemisis EA</h3>
                         <p>Fully automated trading bot built for precision across multi-pairs.</p>
@@ -421,6 +434,7 @@
                     </div>
 
                     <div class="bot-box">
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
                         <div class="badge">Precision Scalper</div>
                         <h3>Elite Scalper</h3>
                         <p>Precision short-term entries with advanced risk controls.</p>
@@ -435,7 +449,8 @@
                     </div>
 
                     <div class="bot-box">
-                        <div class="badge" style="background:rgba(5,150,105,0.3);color:#6ee7b7;border-color:rgba(5,150,105,0.5)">Multi-Strategy</div>
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
+                        <div class="badge" style="background:linear-gradient(135deg, rgba(5,150,105,0.2), rgba(4,120,87,0.3));color:#6ee7b7;border-color:rgba(5,150,105,0.5)">Multi-Strategy</div>
                         <h3>All in One EA</h3>
                         <p>One bot, all markets. Scalping, day trading & swing trading combined.</p>
                         <div class="price-tag">$310</div>
@@ -449,7 +464,8 @@
                     </div>
 
                     <div class="bot-box">
-                        <div class="badge" style="background:rgba(217,119,6,0.3);color:#fcd34d;border-color:rgba(217,119,6,0.5)">Gold · XAUUSD</div>
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
+                        <div class="badge" style="background:linear-gradient(135deg, rgba(217,119,6,0.2), rgba(180,83,9,0.3));color:#fcd34d;border-color:rgba(217,119,6,0.5)">Gold · XAUUSD</div>
                         <h3>Gold Beast EA</h3>
                         <p>Unleash the beast on Gold (XAUUSD) to maximize profits.</p>
                         <div class="price-tag">$190</div>
@@ -463,6 +479,7 @@
                     </div>
 
                     <div class="bot-box">
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
                         <div class="badge">Hybrid Strategy</div>
                         <h3>Scalper V12 Hybrid EA</h3>
                         <p>Hybrid scalping + trend following logic for consistent profits.</p>
@@ -477,7 +494,8 @@
                     </div>
 
                     <div class="bot-box">
-                        <div class="badge" style="background:rgba(202,138,4,0.3);color:#fef08a;border-color:rgba(202,138,4,0.5)">Gold & Majors</div>
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
+                        <div class="badge" style="background:linear-gradient(135deg, rgba(202,138,4,0.2), rgba(161,98,7,0.3));color:#fef08a;border-color:rgba(202,138,4,0.5)">Gold & Majors</div>
                         <h3>Awais GM EA</h3>
                         <p>Smart Money Concepts built-in with low drawdown & high safety.</p>
                         <div class="price-tag">$290</div>
@@ -491,6 +509,7 @@
                     </div>
 
                     <div class="bot-box">
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
                         <div class="badge">Gold Scalping</div>
                         <h3>Gold Scalper V1.4</h3>
                         <p>Precision entries designed specifically for golden profits.</p>
@@ -505,7 +524,8 @@
                     </div>
 
                     <div class="bot-box">
-                        <div class="badge" style="background:rgba(67,56,202,0.3);color:#a5b4fc;border-color:rgba(67,56,202,0.5)">US30 Index</div>
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
+                        <div class="badge" style="background:linear-gradient(135deg, rgba(67,56,202,0.2), rgba(49,46,129,0.3));color:#a5b4fc;border-color:rgba(67,56,202,0.5)">US30 Index</div>
                         <h3>Master US30 EA</h3>
                         <p>Specialized index trading bot to dominate the Dow Jones.</p>
                         <div class="price-tag">$250</div>
@@ -519,7 +539,8 @@
                     </div>
 
                     <div class="bot-box">
-                        <div class="badge" style="background:rgba(8,145,178,0.3);color:#67e8f9;border-color:rgba(8,145,178,0.5)">All Currencies</div>
+                        <div class="box-3d-header">CAPITAL EDGE TRADING EA</div>
+                        <div class="badge" style="background:linear-gradient(135deg, rgba(8,145,178,0.2), rgba(14,116,144,0.3));color:#67e8f9;border-color:rgba(8,145,178,0.5)">All Currencies</div>
                         <h3>Currency Pairs Scalper Autobot</h3>
                         <p>Scalping engine for majors, minors and exotic currency pairs.</p>
                         <div class="price-tag">$390</div>
