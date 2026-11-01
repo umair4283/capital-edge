@@ -8,7 +8,6 @@
     <style>
         :root {
             --bg-light: #f7f4fc;
-            --card-bg: linear-gradient(145deg, #181124, #0d0914);
             --line: rgba(139, 92, 246, 0.15);
             --tx-dark: #111827;
             --mut: #9ca3af;
@@ -45,7 +44,6 @@
         a { color: inherit; text-decoration: none; }
         .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 
-        /* Dark Header like Father of Forex */
         header {
             position: sticky;
             top: 0;
@@ -157,7 +155,7 @@
             box-shadow: 0 10px 30px rgba(139, 92, 246, 0.08);
         }
 
-        /* 3D Software Box Style Bot Cards (Exact match to screenshot) */
+        /* 3D Bot Cards with AI Robot Background Image */
         .grid-bots {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -166,7 +164,12 @@
         }
 
         .bot-box {
-            background: var(--card-bg);
+            /* AI Robot & Tech glowing background overlay */
+            background: linear-gradient(135deg, rgba(13, 9, 20, 0.94), rgba(24, 17, 36, 0.94)), 
+                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
             border: 2px solid #3b2865;
             border-radius: 20px;
             padding: 36px 24px;
