@@ -1,553 +1,343 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capital Edge | Automated Forex EA Bots</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-main: #fbf9fd;
-            --bg-card: #ffffff;
-            --accent-purple: #8b5cf6;
-            --accent-purple-hover: #7c3aed;
-            --accent-purple-glow: rgba(139, 92, 246, 0.25);
-            --header-bg: #0b0f19;
-            --text-dark: #111827;
-            --text-muted: #6b7280;
-            --border-color: #e5e7eb;
-            --grid-line: rgba(139, 92, 246, 0.05);
-            --transition: all 0.3s ease;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Capital Edge | Premium Forex Expert Advisors (MT4 & MT5)</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0f19;--card:#111827;--line:#1f2937;--tx:#f4f4f4;--mut:#9ca3af;--gold:#f5b932;--gold2:#e8920c;--grn:#22c55e;--red:#ef4444;--purple:#8b5cf6;
+--fh:'Montserrat','Arial Black',sans-serif;--fb:'Inter',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,Consolas,monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:90px;color-scheme:dark}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:radial-gradient(900px 500px at 75% 0,#2e1065 0,transparent 60%),var(--bg);color:var(--tx);font-family:var(--fb);line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(11,15,25,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{font-family:var(--fh);font-weight:900;font-size:20px;letter-spacing:.5px}.logo b{color:var(--gold)}
+.logo small{display:block;font:400 8px var(--fm);letter-spacing:2px;color:var(--mut)}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav a{font-size:13px;font-weight:600;letter-spacing:.5px;color:#cfcfcf;text-transform:uppercase}nav a:hover{color:var(--gold)}
+.btn{display:inline-block;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;font-weight:800;border-radius:10px;padding:14px 28px;font-size:15px;letter-spacing:.4px;box-shadow:0 8px 28px rgba(139,92,246,.25);border:0;cursor:pointer;font-family:var(--fb);text-transform:uppercase}
+.btn:hover{filter:brightness(1.08)}.btn.sm{padding:10px 18px;font-size:13px}.btn.out{background:none;color:var(--gold);border:1px solid var(--gold);box-shadow:none}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--tx);border-radius:8px;padding:8px 12px;font-size:18px}
+.pill{display:inline-block;font:600 11px var(--fm);letter-spacing:1.5px;color:var(--gold);border:1px solid #4a3a12;background:#15110a;border-radius:99px;padding:7px 14px;text-transform:uppercase}
+h1,h2{font-family:var(--fh);font-weight:900;text-transform:uppercase;line-height:1.05;margin:14px 0}
+h1{font-size:clamp(38px,6vw,72px)}h2{font-size:clamp(28px,4vw,46px)}
+.g{background:linear-gradient(90deg,#fde08a,var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);max-width:640px;font-size:17px}.c{text-align:center}.c .sub{margin:0 auto}
+section{padding:90px 0;border-top:1px solid #1f2937}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:70px 0 80px;border:0}
+.mini{display:flex;gap:22px;flex-wrap:wrap;margin-top:44px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;font-weight:600}
+.mini span:before{content:"✓ ";color:var(--gold)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;position:relative}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+/* 3D BOX BOTS CARDS LAYOUT */
+.grid-bots{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.bot-box{background:linear-gradient(145deg, #131b2e, #090d16);border:2px solid #2a3b5c;border-radius:24px;padding:32px 24px;text-align:center;position:relative;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,0.5), inset 0 0 20px rgba(139,92,246,0.15);transition:all 0.3s ease}
+.bot-box:hover{transform:translateY(-6px);border-color:var(--purple);box-shadow:0 20px 45px rgba(139,92,246,0.3), inset 0 0 25px rgba(139,92,246,0.25)}
+.bot-box .badge{display:inline-block;background:rgba(139,92,246,0.2);color:#c4b5fd;border:1px solid rgba(139,92,246,0.4);font:700 10px var(--fm);padding:5px 14px;border-radius:99px;text-transform:uppercase;margin-bottom:16px;letter-spacing:1px}
+.bot-box h3{font-family:var(--fh);font-size:20px;font-weight:900;color:#fff;margin:8px 0 10px;text-transform:uppercase;letter-spacing:0.5px}
+.bot-box p{color:var(--mut);font-size:13px;margin:0 0 20px;min-height:38px}
+.bot-box .price-tag{font-family:var(--fh);font-size:32px;font-weight:900;color:var(--gold);margin:14px 0 20px;text-shadow:0 2px 10px rgba(245,185,50,0.3)}
+.bot-box .price-tag span{font:400 13px var(--fm);color:var(--mut);text-decoration:line-through;margin-left:6px}
+.bot-box ul{list-style:none;padding:0;margin:0 0 24px;text-align:left;border-top:1px solid var(--line);padding-top:16px}
+.bot-box li{padding:6px 0;font-size:13px;color:#d1d5db;position:relative;padding-left:22px}
+.bot-box li:before{content:"✓";position:absolute;left:0;color:var(--grn);font-weight:900}
+.bot-box .btn{width:100%;text-align:center;padding:12px 20px;border-radius:12px}
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-            /* Grid background pattern */
-            background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-                              linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        /* Header / Navbar (Dark style like Father of Forex) */
-        header {
-            background: var(--header-bg);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, #f59e0b 0%, #d97706 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-weight: 800;
-            font-size: 1.1rem;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
-        }
-
-        .logo-text {
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-        }
-
-        .logo-text span {
-            display: block;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .demo-badge {
-            background: rgba(139, 92, 246, 0.15);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            color: #a78bfa;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .demo-badge i {
-            color: #10b981;
-            font-size: 0.6rem;
-        }
-
-        .explore-header-btn {
-            background: var(--accent-purple);
-            color: #fff;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
-
-        .explore-header-btn:hover {
-            background: var(--accent-purple-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--accent-purple-glow);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 10rem 5% 4rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            color: var(--accent-purple);
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.15;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero h1 span {
-            color: var(--accent-purple);
-            font-style: italic;
-            font-weight: 700;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 700px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .btn-primary {
-            background: var(--accent-purple);
-            color: #fff;
-            padding: 0.9rem 1.8rem;
-            border-radius: 10px;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition);
-            box-shadow: 0 4px 14px var(--accent-purple-glow);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-purple-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-dark {
-            background: var(--text-dark);
-            color: #fff;
-            padding: 0.9rem 1.8rem;
-            border-radius: 10px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .btn-dark:hover {
-            background: #1f2937;
-            transform: translateY(-2px);
-        }
-
-        /* Features Bar Under Hero */
-        .features-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            border: 1px solid var(--border-color);
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-            margin-bottom: 4rem;
-        }
-
-        .feature-item {
-            padding: 1.5rem 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border-right: 1px solid var(--border-color);
-        }
-
-        .feature-item:last-child {
-            border-right: none;
-        }
-
-        .feature-item i {
-            font-size: 1.5rem;
-            color: var(--accent-purple);
-        }
-
-        .feature-item h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .feature-item p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* Main Container & Bots Grid */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto 5rem;
-            padding: 0 5%;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 2.5rem;
-            text-align: center;
-            color: var(--text-dark);
-        }
-
-        .section-title span {
-            color: var(--accent-purple);
-        }
-
-        .bots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 2rem;
-        }
-
-        .bot-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-        }
-
-        .bot-card:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px var(--accent-purple-glow);
-        }
-
-        .bot-tag {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(139, 92, 246, 0.1);
-            color: var(--accent-purple);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .bot-content h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 0.4rem;
-        }
-
-        .bot-category {
-            color: var(--accent-purple);
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .bot-description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.8rem;
-        }
-
-        .bot-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.2rem;
-            margin-top: auto;
-        }
-
-        .bot-price {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .details-btn {
-            background: rgba(139, 92, 246, 0.1);
-            color: var(--accent-purple);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .bot-card:hover .details-btn {
-            background: var(--accent-purple);
-            color: #fff;
-            border-color: var(--accent-purple);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--header-bg);
-            color: var(--text-muted);
-            text-align: center;
-            padding: 3rem 5%;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .demo-badge { display: none; }
-            .feature-item { border-right: none; border-bottom: 1px solid var(--border-color); }
-        }
-    </style>
+.term{padding:0;overflow:hidden}.tbar{display:flex;gap:7px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);font:11px var(--fm);color:var(--mut)}
+.tbar i{width:11px;height:11px;border-radius:50%;background:var(--red)}.tbar i:nth-child(2){background:#f59e0b}.tbar i:nth-child(3){background:var(--grn)}
+.tb{padding:18px;display:grid;gap:12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.k{background:#0b0f19;border:1px solid var(--line);border-radius:12px;padding:14px}.k small{display:block;font:10px var(--fm);color:var(--mut);letter-spacing:1px;text-transform:uppercase}
+.k b{font:700 22px var(--fm)}.up{color:var(--grn)}.gd{color:var(--gold)}
+.row{display:flex;justify-content:space-between;font:12px var(--fm);background:#0b0f19;border:1px solid var(--line);border-radius:10px;padding:11px 14px}
+.note{font:11px var(--fm);color:var(--mut);margin-top:10px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px;align-items:start}
+.plan{position:relative}.plan.pop{border-color:var(--gold);box-shadow:0 0 40px rgba(245,185,50,.15)}
+.plan .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#1a1100;font:700 11px var(--fm);padding:5px 14px;border-radius:99px;white-space:nowrap}
+.price{font:900 48px var(--fh);color:var(--gold);margin:14px 0 4px}.price small{font:11px var(--fm);color:var(--mut)}
+.plan ul{list-style:none;padding:16px 0 20px;margin:16px 0 0;border-top:1px solid var(--line)}
+.plan li{padding:6px 0 6px 26px;font-size:14px;position:relative;color:#cfcfcf}
+.plan li:before{content:"✓";position:absolute;left:0;color:var(--grn)}
+.plan .btn{width:100%;text-align:center}
+.steps{counter-reset:s}.steps .card:before{counter-increment:s;content:counter(s);font:900 40px var(--fh);color:var(--gold);display:block}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:12px auto;max-width:800px;text-align:left}
+summary{cursor:pointer;font-weight:600}details p{color:var(--mut);margin:12px 0 0}
+.cta{background:radial-gradient(600px 260px at 50% 50%,#2e1065,transparent 70%)}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mut);font-size:12px;text-align:center}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid-bots,.plans{grid-template-columns:1fr}
+nav{position:absolute;top:72px;left:0;right:0;background:#0b0f19;border-bottom:1px solid var(--line);display:none;padding:10px 20px 20px}nav.open{display:block}nav ul{flex-direction:column;gap:16px}
+.burger{display:block}.hd-btn{display:none}section{padding:64px 0}}
+</style>
 </head>
 <body>
+<header><div class="wrap nav">
+<a href="#home" class="logo"><span data-brand>CAPITAL</span> <b data-brand2>EDGE</b><small>EXPERT ADVISORS & AUTOMATION</small></a>
+<nav id="nav"><ul>
+<li><a href="#home">Home</a></li><li><a href="#bots">EA Collection</a></li><li><a href="#bundle">Mega Bundle</a></li><li><a href="#how">FAQ</a></li>
+</ul></nav>
+<a class="btn sm hd-btn wa" href="#">WhatsApp Support →</a>
+<button class="burger" id="bg" aria-label="Menu">☰</button>
+</div></header>
 
-    <!-- Header -->
-    <header>
-        <a href="#" class="logo-area">
-            <div class="logo-icon">CE</div>
-            <div class="logo-text">
-                Capital Edge
-                <span>Trading EAs</span>
-            </div>
-        </a>
-        
-        <div class="nav-right">
-            <div class="demo-badge">
-                <i class="fas fa-circle"></i> Scalper V22 Live Demo
-            </div>
-            <a href="#" class="explore-header-btn">
-                Explore Bots <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </header>
+<main>
+<section id="home" class="hero wrap">
+<div>
+<span class="pill">MT4 & MT5 Compatible // 1:1 Setup Support</span>
+<h1>Automate Your Trades <br><span class="g">Like A Pro</span></h1>
+<p class="sub">Explore battle-tested Expert Advisors for scalping, gold trading, indices, and funded challenges. Built for speed, programmed for profit.</p>
+<p style="margin-top:30px"><a class="btn wa" href="#">Explore EA Collection →</a></p>
+<div class="mini"><span>100% Automated Trading</span><span>Ultra-Fast Execution</span><span>News Filter Protection</span><span>VPS Optimized 24/7</span></div>
+</div>
+<div class="card term">
+<div class="tbar"><i></i><i></i><i></i>&nbsp; AWAIS SCALPER V22 – LIVE PREVIEW</div>
+<div class="tb">
+<div class="two"><div class="k"><small>Balance</small><b>$1,000.00</b></div><div class="k"><small>Floating P/L</small><b class="up">+$240.50</b></div></div>
+<div class="k"><small>XAU/USD · M1 Scalper Engine</small>
+<svg class="ch" viewBox="0 0 400 120" preserveAspectRatio="none"><defs><linearGradient id="a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".5"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><path d="M0 95 C60 85 90 60 130 55 S190 80 230 70 S300 20 330 25 L330 120 L0 120Z" fill="url(#a)"/><path d="M0 95 C60 85 90 60 130 55 S190 80 230 70 S300 20 330 25" fill="none" stroke="#8b5cf6" stroke-width="2.5"/></svg></div>
+<div class="row"><span>XAUUSD BUY 0.10</span><span class="up">+$84.20</span></div>
+<div class="row"><span>EURUSD BUY 0.20</span><span class="up">+$32.10</span></div>
+<div class="note">* Live automated execution preview on MetaTrader platform.</div>
+</div></div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-tag">
-            <i class="fas fa-shield-alt"></i> Forex automation, made clearer
-        </div>
-        <h1>Automate your trades with <span>battle-tested</span> Forex EA bots</h1>
-        <p>Explore Expert Advisors for scalping, gold, indices, and funded challenges. Find product details, MT4/MT5 compatibility, and setup support in one place.</p>
-        
-        <div class="hero-cta-group">
-            <a href="#" class="btn-primary">Shop EA Bots <i class="fas fa-arrow-right"></i></a>
-            <a href="#" class="btn-dark">Open the trade engine</a>
-        </div>
-    </section>
+<!-- BOTS COLLECTION SECTION -->
+<section id="bots"><div class="wrap c">
+<span class="pill">The Collection</span><h2>Choose A Bot For Your <span class="g">Trading Focus</span></h2>
+<p class="sub">High-performance MT4 & MT5 algorithmic bots designed for consistent results.</p>
+<div class="grid-bots">
 
-    <!-- Features Bar -->
-    <div class="container">
-        <div class="features-bar">
-            <div class="feature-item">
-                <i class="fas fa-chart-line"></i>
-                <div>
-                    <h4>MT4 & MT5</h4>
-                    <p>Platform compatible</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-headset"></i>
-                <div>
-                    <h4>1:1 Setup</h4>
-                    <p>One-to-one setup support</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-sync-alt"></i>
-                <div>
-                    <h4>Trade Engine</h4>
-                    <p>Explore the trading workflow</p>
-                </div>
-            </div>
-        </div>
+<div class="bot-box">
+<div class="badge" style="background:rgba(245,185,50,0.2);color:var(--gold);border-color:rgba(245,185,50,0.4)">★ Best Seller</div>
+<h3>Awais Scalper V22 EA</h3>
+<p>High-frequency scalping engine built for speed and high win rate.</p>
+<div class="price-tag">$699 <span>$999</span></div>
+<ul>
+<li>Ultra fast execution</li>
+<li>News filter protection</li>
+<li>Smart risk management</li>
+<li>Works on MT4 & MT5</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $699</a>
+</div>
 
-        <h2 class="section-title">Explore Our <span>Trading Bots</span></h2>
-        
-        <div class="bots-grid">
-            <!-- Bot 1 -->
-            <div class="bot-card">
-                <span class="bot-tag">Best Seller</span>
-                <div class="bot-content">
-                    <h3>Awais Scalper V22</h3>
-                    <div class="bot-category">Ultra Fast Scalping</div>
-                    <p class="bot-description">High win-rate automated scalping engine built for speed, advanced news filter protection, and smart risk management.</p>
-                </div>
-                <div class="bot-footer">
-                    <div class="bot-price">$350</div>
-                    <a href="#" class="details-btn">View Details</a>
-                </div>
-            </div>
+<div class="bot-box">
+<div class="badge">Scalping Engine</div>
+<h3>Fastest Scalper V15 EA</h3>
+<p>Ultra-fast automated scalping engine with high accuracy precision.</p>
+<div class="price-tag">$370</div>
+<ul>
+<li>Ultra fast execution</li>
+<li>Smart risk control</li>
+<li>News filter protection</li>
+<li>24/7 automated trading</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $370</a>
+</div>
 
-            <!-- Bot 2 -->
-            <div class="bot-card">
-                <span class="bot-tag">Gold Special</span>
-                <div class="bot-content">
-                    <h3>Gold Beast EA</h3>
-                    <div class="bot-category">Gold · XAUUSD</div>
-                    <p class="bot-description">Specialized algorithmic bot engineered specifically to master gold market volatility and capture high-probability swings.</p>
-                </div>
-                <div class="bot-footer">
-                    <div class="bot-price">$190</div>
-                    <a href="#" class="details-btn">View Details</a>
-                </div>
-            </div>
+<div class="bot-box">
+<div class="badge" style="background:rgba(37,99,235,0.2);color:#93c5fd;border-color:rgba(37,99,235,0.4)">Prop-Firm & Funded</div>
+<h3>Latest USD & Funded SL TP Autobot</h3>
+<p>Automated SL/TP and risk workflow for prop-firm challenges.</p>
+<div class="price-tag">$410</div>
+<ul>
+<li>Auto SL & TP management</li>
+<li>Funded account workflow</li>
+<li>Risk-aware execution</li>
+<li>MT4 & MT5 compatible</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $410</a>
+</div>
 
-            <!-- Bot 3 -->
-            <div class="bot-card">
-                <span class="bot-tag">Prop Firm</span>
-                <div class="bot-content">
-                    <h3>Latest USD & Funded SL/TP Autobot</h3>
-                    <div class="bot-category">Prop-firm & Funded Workflows</div>
-                    <p class="bot-description">Automated stop-loss, take-profit, and rigorous risk-management framework tailored for prop-firm challenges and funded accounts.</p>
-                </div>
-                <div class="bot-footer">
-                    <div class="bot-price">$410</div>
-                    <a href="#" class="details-btn">View Details</a>
-                </div>
-            </div>
+<div class="bot-box">
+<div class="badge">Multi-Pair Core</div>
+<h3>Nemisis EA</h3>
+<p>Fully automated trading bot built for precision across multi-pairs.</p>
+<div class="price-tag">$290</div>
+<ul>
+<li>Fully automated trading</li>
+<li>High win rate strategy</li>
+<li>Multi-pair support</li>
+<li>Built-in risk management</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $290</a>
+</div>
 
-            <!-- Bot 4 -->
-            <div class="bot-card">
-                <span class="bot-tag">Multi-Strategy</span>
-                <div class="bot-content">
-                    <h3>All in One EA</h3>
-                    <div class="bot-category">Advanced Multi-Pair</div>
-                    <p class="bot-description">Combines multiple trading strategies into a single robust expert advisor to diversify market exposure efficiently.</p>
-                </div>
-                <div class="bot-footer">
-                    <div class="bot-price">$310</div>
-                    <a href="#" class="details-btn">View Details</a>
-                </div>
-            </div>
+<div class="bot-box">
+<div class="badge">Precision Scalper</div>
+<h3>Elite Scalper</h3>
+<p>Precision short-term entries with advanced risk controls.</p>
+<div class="price-tag">$250</div>
+<ul>
+<li>Ultra fast execution</li>
+<li>Advanced risk management</li>
+<li>VPS optimized 24/7</li>
+<li>Lifetime updates & support</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $250</a>
+</div>
 
-            <!-- Bot 5 -->
-            <div class="bot-card">
-                <span class="bot-tag">Index Expert</span>
-                <div class="bot-content">
-                    <h3>Master US30 EA</h3>
-                    <div class="bot-category">US30 Index</div>
-                    <p class="bot-description">Targeted execution engine designed specifically to trade US30 indices with precision entry and exit parameters.</p>
-                </div>
-                <div class="bot-footer">
-                    <div class="bot-price">$290</div>
-                    <a href="#" class="details-btn">View Details</a>
-                </div>
-            </div>
+<div class="bot-box">
+<div class="badge" style="background:rgba(5,150,105,0.2);color:#6ee7b7;border-color:rgba(5,150,105,0.4)">Multi-Strategy</div>
+<h3>All in One EA</h3>
+<p>One bot, all markets. Scalping, day trading & swing trading combined.</p>
+<div class="price-tag">$310</div>
+<ul>
+<li>Multi-market trading</li>
+<li>AI-powered decision system</li>
+<li>Adaptive market detection</li>
+<li>Lifetime updates & support</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $310</a>
+</div>
 
-            <!-- Bot 6 -->
-            <div class="bot-card">
-                <span class="bot-tag">Bundle Offer</span>
-                <div class="bot-content">
-                    <h3>12 Bots Mega Bundle</h3>
-                    <div class="bot-category">All-in-One Collection</div>
-                    <p class="bot-description">Get all 12 premium trading bots in one instant-access package with a lifetime license and 1:1 setup assistance.</p>
-                </div>
-                <div class="bot-footer">
-                    <div class="bot-price">$1299</div>
-                    <a href="#" class="details-btn">View Details</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="bot-box">
+<div class="badge" style="background:rgba(217,119,6,0.2);color:#fcd34d;border-color:rgba(217,119,6,0.4)">Gold · XAUUSD</div>
+<h3>Gold Beast EA</h3>
+<p>Unleash the beast on Gold (XAUUSD) to maximize profits.</p>
+<div class="price-tag">$190</div>
+<ul>
+<li>Optimized for Gold XAUUSD</li>
+<li>High win rate strategy</li>
+<li>Ultra fast execution</li>
+<li>Works on MT4 & MT5</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $190</a>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Capital Edge. All Rights Reserved. Compatible with MetaTrader 4 & MetaTrader 5.</p>
-    </footer>
+<div class="bot-box">
+<div class="badge">Hybrid Strategy</div>
+<h3>Scalper V12 Hybrid EA</h3>
+<p>Hybrid scalping + trend following logic for consistent profits.</p>
+<div class="price-tag">$340</div>
+<ul>
+<li>Scalping + Trend following</li>
+<li>Multi-market coverage</li>
+<li>Adaptive algorithm</li>
+<li>MT4 & MT5 compatible</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $340</a>
+</div>
 
+<div class="bot-box">
+<div class="badge" style="background:rgba(202,138,4,0.2);color:#fef08a;border-color:rgba(202,138,4,0.4)">Gold & Majors</div>
+<h3>Awais GM EA</h3>
+<p>Smart Money Concepts built-in with low drawdown & high safety.</p>
+<div class="price-tag">$290</div>
+<ul>
+<li>Smart Money Concepts (SMC)</li>
+<li>Low drawdown safety</li>
+<li>Forex, Gold & Indices</li>
+<li>Lifetime support</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $290</a>
+</div>
+
+<div class="bot-box">
+<div class="badge">Gold Scalping</div>
+<h3>Gold Scalper V1.4</h3>
+<p>Precision entries designed specifically for golden profits.</p>
+<div class="price-tag">$250</div>
+<ul>
+<li>Precision gold entries</li>
+<li>Smart risk management</li>
+<li>VPS optimized</li>
+<li>MT4 & MT5 support</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $250</a>
+</div>
+
+<div class="bot-box">
+<div class="badge" style="background:rgba(67,56,202,0.2);color:#a5b4fc;border-color:rgba(67,56,202,0.4)">US30 Index</div>
+<h3>Master US30 EA</h3>
+<p>Specialized index trading bot to dominate the Dow Jones.</p>
+<div class="price-tag">$250</div>
+<ul>
+<li>Optimized for US30 / Dow</li>
+<li>Smart entry & exit system</li>
+<li>Maximum safety protection</li>
+<li>Lifetime updates</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $250</a>
+</div>
+
+<div class="bot-box">
+<div class="badge" style="background:rgba(8,145,178,0.2);color:#67e8f9;border-color:rgba(8,145,178,0.4)">All Currencies</div>
+<h3>Currency Pairs Scalper Autobot</h3>
+<p>Scalping engine for majors, minors and exotic currency pairs.</p>
+<div class="price-tag">$390</div>
+<ul>
+<li>Works on all currency pairs</li>
+<li>Precise scalping entries</li>
+<li>Smart risk control</li>
+<li>MT4 & MT5 compatible</li>
+</ul>
+<a class="btn sm wa" href="#">Buy Now — $390</a>
+</div>
+
+</div></div></section>
+
+<!-- MEGA BUNDLE SECTION -->
+<section id="bundle"><div class="wrap c">
+<span class="pill">Mega Bundle Offer</span><h2>12 Bots <span class="g">Mega Bundle</span></h2>
+<p class="sub">Get all 12 premium trading bots in one instant-access, lifetime-license package.</p>
+<div class="card" style="max-width:700px;margin:40px auto 0;text-align:left;border-color:var(--purple)">
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+<div>
+<h3>Complete 12 EAs Package</h3>
+<p style="color:var(--mut);font-size:14px">Awais V22, Gold Beast, US30 Master, Scalper V12 Hybrid & all other bots included.</p>
+</div>
+<div style="text-align:right">
+<div class="price" style="margin:0">$1,299</div>
+<small style="color:var(--mut)">Lifetime License · Instant Delivery</small>
+</div>
+</div>
+<hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
+<p style="font-size:14px;color:#cfcfcf;margin-bottom:20px">Includes 1:1 remote setup assistance via WhatsApp or Telegram, free lifetime updates, and preset configuration files for both MT4 and MT5.</p>
+<a class="btn wa" href="#" style="width:100%;text-align:center">Get Mega Bundle Now — $1299 →</a>
+</div>
+</div></section>
+
+<!-- HOW IT WORKS SECTION -->
+<section id="how"><div class="wrap c">
+<span class="pill">Support & Setup</span><h2>How It <span class="g">Works</span></h2>
+<div class="grid3 steps" style="text-align:left;margin-top:40px">
+<div class="card"><h3>Choose a bot</h3><p>Select the EA that fits your trading style, asset preference, or prop-firm goal.</p></div>
+<div class="card"><h3>Message us on WhatsApp</h3><p>Contact our support team directly to complete your secure order and get instant file delivery.</p></div>
+<div class="card"><h3>Install & Run</h3><p>Attach the bot to MT4 or MT5 using our pre-calibrated presets with 1:1 setup help.</p></div>
+</div>
+
+<h2 style="margin-top:80px">Frequently Asked <span class="g">Questions</span></h2>
+<details><summary>Which trading platforms are supported?</summary><p>All our Expert Advisors are fully compatible with MetaTrader 4 (MT4) and MetaTrader 5 (MT5).</p></details>
+<details><summary>How do I receive the bot after payment?</summary><p>After purchasing, simply message us on WhatsApp or Telegram, and our team will instantly send you the EA files, preset guides, and instructions.</p></details>
+<details><summary>Do you provide setup support?</summary><p>Yes! Every purchase includes 1:1 setup guidance and support to help you configure the bot properly on your platform or VPS.</p></details>
+<details><summary>Are profits guaranteed?</summary><p>No. Trading in financial markets carries substantial risk. Past performance or backtests do not guarantee future results.</p></details>
+</div></section>
+
+<!-- CTA SECTION -->
+<section class="cta"><div class="wrap c">
+<span class="pill">Ready to get started?</span><h2>Automate Your Trading <span class="g">Today</span></h2>
+<p class="sub">Connect with our team on WhatsApp or Telegram for instant support and EA delivery.</p>
+<p style="margin:30px 0"><a class="btn wa" href="#">Chat With Support on WhatsApp →</a></p>
+<div class="note">Instant digital delivery · Lifetime license · 1:1 Setup assistance</div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><b data-brand-full>CAPITAL EDGE</b> &nbsp;—&nbsp; Automated Forex Trading Technology. All rights reserved.</div></footer>
+
+<script>
+var CONFIG={brand:"CAPITAL",brand2:"EDGE",phone:"923377406534",msg:"Hello, I am interested in purchasing your Forex Expert Advisors. Please share details."};
+var wa="https://wa.me/"+CONFIG.phone+"?text="+encodeURIComponent(CONFIG.msg);
+document.querySelectorAll(".wa").forEach(function(a){a.href=wa;a.target="_blank";a.rel="noopener"});
+document.querySelectorAll("[data-brand]").forEach(function(e){e.textContent=CONFIG.brand});
+document.querySelectorAll("[data-brand2]").forEach(function(e){e.textContent=CONFIG.brand2});
+document.querySelectorAll("[data-brand-full]").forEach(function(e){e.textContent=CONFIG.brand+" "+CONFIG.brand2});
+var nav=document.getElementById("nav");
+document.getElementById("bg").onclick=function(){nav.classList.toggle("open")};
+nav.querySelectorAll("a").forEach(function(a){a.onclick=function(){nav.classList.remove("open")}});
+</script>
 </body>
 </html>
